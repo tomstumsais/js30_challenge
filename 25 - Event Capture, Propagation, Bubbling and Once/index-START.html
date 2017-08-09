@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    div {
+      width: 100%;
+      padding: 100px;
+    }
+
+    .one {
+      background: thistle;
+    }
+
+    .two {
+      background: mistyrose;
+    }
+
+    .three {
+      background: coral;
+    }
+  </style>
+
+  <button>You can click me only once!!!!</button>
+  <script>
+    const divs = document.querySelectorAll('div');
+    const button = document.querySelector('button');
+
+    function logText(e) {
+      console.log(this.classList.value);
+      e.stopPropagation(); // stop bubbling up or capturing down!
+    }
+
+    divs.forEach(div => div.addEventListener('click', logText, {
+      // With bubbling (capture: false), the event is first captured and handled by the innermost element and then propagated to outer elements.
+      // With capturing (capture: true), the event is first captured by the outermost element and propagated to the inner elements.
+      capture: false,
+      once: true // this property triggers event only ONCE and then unbind it from element
+    }));
+
+    button.addEventListener('click', () => {
+      console.log('Click!!!');
+    }, {
+      once: true // this property triggers event only ONCE and then unbind it from element
+    })
+  </script>
+</body>
+
+</html>
