@@ -11,7 +11,7 @@ function timer(seconds) {
     const then = now + seconds * 1000;
     displayTimeLeft(seconds);
     displayEndTime(then);
-    
+
     countdown = setInterval(() => {
         const secondsLeft = Math.round((then - Date.now()) / 1000);
         // check if we should stop it!
@@ -49,7 +49,7 @@ function startTimer() {
 }
 
 buttons.forEach(button => button.addEventListener('click', startTimer));
-document.customForm.addEventListener('submit', function(e) {
+document.customForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const mins = this.minutes.value;
     timer(mins * 60);
