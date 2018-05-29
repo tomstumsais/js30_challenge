@@ -7,7 +7,7 @@ Link to challenge: https://javascript30.com/
 
 To get running those tasks, you don't need to install or setup anything special. 
 You just need to download or clone this repository `git clone https://github.com/tomstumshais/js-30-days-challenge.git`.
-Open any of task folders and launch `index.html` file in a web browser.
+Open any of task folders and launch `index.html` file in a web browser to test your selected task.
 
 ## Built With
 
